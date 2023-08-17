@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="gusi_Test.FlutterAndroidShopper">
+      <class name="com.gusi.test.LoginGusiTest">
         <methods>
-          <include name="login"/>
-          <include name="setUp"/>
+          <include name="test_TC001_verifyAppLaunch"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- gusi_Test.FlutterAndroidShopper -->
+      </class> <!-- com.gusi.test.LoginGusiTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

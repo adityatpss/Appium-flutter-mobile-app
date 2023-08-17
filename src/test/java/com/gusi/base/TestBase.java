@@ -1,20 +1,36 @@
 package com.gusi.base;
  
 //import java.io.File;
+//import java.io.FileInputStream;
+//import java.io.IOException;
+//import java.io.InputStream;
+//import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 //import java.util.Set;
+//import java.util.Arrays;
+import java.util.Properties;
 
+//import org.apache.commons.io.FileUtils;
+//import org.openqa.selenium.OutputType;
+//import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
+//import org.testng.ITestResult;
+//import org.testng.annotations.AfterClass;
+//import org.testng.annotations.AfterMethod;
+//import org.testng.annotations.AfterSuite;
+//import org.testng.annotations.AfterTest;
 //import org.testng.ITestResult;
 //import org.testng.annotations.AfterClass;
 //import org.testng.annotations.AfterMethod;
 //import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 //import org.testng.annotations.BeforeTest;
+//import org.testng.annotations.BeforeTest;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+//import com.relevantcodes.extentreports.LogStatus;
 //import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
@@ -27,6 +43,7 @@ public class TestBase {
     public static AppiumDriver driver;
     public  ExtentReports extent;
     public ExtentTest logger;
+    public static Properties envConfig;
 
   //  private String reportDirectory = "reports";
   //  private String reportFormat = "html";
@@ -41,7 +58,7 @@ public class TestBase {
        // File appFile = new File(rootFile.getAbsolutePath() + appPtah);
         //appPtah = appFile.getAbsolutePath();
         DesiredCapabilities flutterCapabilities = new DesiredCapabilities();
-        flutterCapabilities.setCapability( "deviceName", "Pixel 6 API" );
+        flutterCapabilities.setCapability( "deviceName", "Pixel_3a" );
         flutterCapabilities.setCapability( "platformName", "Android" );
        // flutterCapabilities.setCapability( "reportDirectory", reportDirectory );
        // flutterCapabilities.setCapability( "reportFormat", reportFormat );
@@ -50,9 +67,14 @@ public class TestBase {
        // flutterCapabilities.setCapability("noReset", "true");
        // flutterCapabilities.setCapability("skipUnlock","true");
        // flutterCapabilities.setCapability("udid",udid);
-        flutterCapabilities.setCapability("app", "C:\\Users\\tpss\\Desktop\\GUSI\\Dummy_APK\\app-debug.apk");
-        driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"), flutterCapabilities);
+        flutterCapabilities.setCapability("app", "/home/tpss/Desktop/Dummy_APK/app-debug.apk");
+       // flutterCapabilities.setCapability("app", "C:\\Users\\tpss\\Desktop\\GUSI\\Dummy_APK\\app-debug.apk");
+        driver = new AppiumDriver(new URL("http://192.168.1.76:4723/wd/hub"), flutterCapabilities);
+       // driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"), flutterCapabilities);
         return driver;
+        
+     
+        
     }
 
     /*
@@ -79,7 +101,7 @@ public class TestBase {
         //You could find the xml file below. Create xml file in your project and copy past the code mentioned below
         extent.loadConfig(new File("D:\\flutterappium\\extent-config.xml"));
     }
-    /*
+    
     @AfterMethod
     public void getResult(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -99,11 +121,11 @@ public class TestBase {
         //If any of your test ended abruptly causing any side-affects (not all logs sent to ExtentReports, information missing), this method will ensure that the test is still appended to the report with a warning message.
         //You should call close() only once, at the very end (in @AfterSuite for example) as it closes the underlying stream.
         //Once this method is called, calling any Extent method will throw an error.
-        //close() - To close all the operation
-       // extent.close();
+       //close() - To close all the operation
+        extent.close();
     }
-
-  /*  public static void switchContext(String context) {
+/*
+   public static void switchContext(String context) {
         driver.getContext();
         Set<String> con = driver.getContextHandles();
         for (String c : con) {
@@ -115,5 +137,25 @@ public class TestBase {
 
 
     }
-*/
+
+    
+    @AfterMethod
+	public void screenshotAndDeleteCookies(ITestResult testResult) throws IOException {
+		//Taking screenshot in case of failure
+		if(testResult.getStatus() == ITestResult.FAILURE){
+			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(scrFile, new File("errorScreenshots\\" + testResult.getName() + "-" 
+					+ Arrays.toString(testResult.getParameters()) +  ".jpg"));	
+			}
+		
+		//Deleting cookies
+		driver.manage().deleteAllCookies();
+	}
+ 
+
+    @AfterSuite
+    public void suiteTearDown() {
+    	driver.quit();
+    }
+    */
 }

@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-09T16:32:34 IST" name="Default suite" finished-at="2023-08-09T16:33:05 IST" duration-ms="31418">
+  <suite started-at="2023-08-17T23:35:22 IST" name="Default suite" finished-at="2023-08-17T23:35:38 IST" duration-ms="15777">
     <groups>
     </groups>
-    <test started-at="2023-08-09T16:32:34 IST" name="Default test" finished-at="2023-08-09T16:33:05 IST" duration-ms="31418">
-      <class name="gusi_Test.FlutterAndroidShopper">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:gusi_Test.FlutterAndroidShopper@2ab4bc72]" started-at="2023-08-09T16:32:34 IST" name="setUp" finished-at="2023-08-09T16:33:00 IST" duration-ms="25555" status="PASS">
+    <test started-at="2023-08-17T23:35:22 IST" name="Default test" finished-at="2023-08-17T23:35:38 IST" duration-ms="15777">
+      <class name="com.gusi.test.LoginGusiTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.gusi.test.LoginGusiTest@2438dcd]" started-at="2023-08-17T23:35:22 IST" name="setup" finished-at="2023-08-17T23:35:34 IST" duration-ms="11849" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="login()[pri:0, instance:gusi_Test.FlutterAndroidShopper@2ab4bc72]" started-at="2023-08-09T16:33:00 IST" name="login" finished-at="2023-08-09T16:33:05 IST" duration-ms="5703" status="PASS">
+        </test-method> <!-- setup -->
+        <test-method signature="test_TC001_verifyAppLaunch()[pri:0, instance:com.gusi.test.LoginGusiTest@2438dcd]" started-at="2023-08-17T23:35:34 IST" name="test_TC001_verifyAppLaunch" finished-at="2023-08-17T23:35:38 IST" duration-ms="3819" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- login -->
-      </class> <!-- gusi_Test.FlutterAndroidShopper -->
+        </test-method> <!-- test_TC001_verifyAppLaunch -->
+      </class> <!-- com.gusi.test.LoginGusiTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

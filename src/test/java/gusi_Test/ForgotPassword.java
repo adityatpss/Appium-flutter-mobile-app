@@ -1,7 +1,7 @@
 package gusi_Test;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -87,10 +87,6 @@ public class ForgotPassword extends com.gusi.base.TestBase {
 		System.out.println("Verify that when user clicked the button again.");
 		Assert.assertEquals("Actual", "expected");
 		Thread.sleep(3000);
-
-
-
- 
 
 
 
